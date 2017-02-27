@@ -9,11 +9,14 @@ namespace LinkedListEx
     public class TorbList<T>
     {
         private Node<T> _head;
+        //private int _index;
 
         public TorbList()
         {
-
+            
         }
+
+       
 
         public void Insert(T data)
         {
@@ -72,6 +75,8 @@ namespace LinkedListEx
             
         }
 
+        //Helpers
+
         private Node<T> FindIndex(int index)
         {
             Node<T> current = _head;
@@ -93,24 +98,25 @@ namespace LinkedListEx
 
         public void Add(T data)
         {
+            Node<T> NodeToBeAdded = new Node<T>(data);
+
             if (_head == null)
             {
-                _head = new Node<T>();
-                _head.Data = data;
-                _head.Next = null; ;
+                _head = NodeToBeAdded;
+                //_head = new Node<T>();
+                //_head.Data = data;
+                //_head.Next = null; 
             }
             else
             {
-                Node<T> dataToAdd = new Node<T>();
-                dataToAdd.Data = data;
+                Node<T> dataToAdd = new Node<T>(data);
+                Node<T> indexOfLastElement = _head;
 
-                Node<T> index = _head;
-
-                while (index.Next != null)
+                while (indexOfLastElement.Next != null)
                 {
-                    index = index.Next;
+                    indexOfLastElement = indexOfLastElement.Next;
                 }
-                index.Next = dataToAdd;
+                indexOfLastElement.Next = dataToAdd;
                 
              }
         }
@@ -131,5 +137,25 @@ namespace LinkedListEx
             }
             return output;
         }
+
+        public int GetLength()
+        {
+            int output = 0;
+            Node<T> countingNode = _head;
+
+            while (countingNode.Next != null)
+            {
+                output++;
+                countingNode = countingNode.Next;
+            }
+            return output;
+        }
+
+        public int GetCount()
+        {
+            return GetLength() + 1;
+        }
+
+
     }
 }

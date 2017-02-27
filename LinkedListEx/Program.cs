@@ -31,11 +31,17 @@ namespace LinkedListEx
 
             Console.WriteLine(members.ToString());
 
+            Console.WriteLine(members.GetLength());
+            Console.WriteLine(members.GetCount());
+
             members.Remove(3);
             //members.Insert(new ClassMember(54, "Foo", "Bar", 122), -10);
 
             Console.WriteLine(members.ToString());
-      
+
+            Console.WriteLine(members.GetLength());
+            Console.WriteLine(members.GetCount());
+
             Console.ReadKey();
         }
     }
