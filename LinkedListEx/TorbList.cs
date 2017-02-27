@@ -45,6 +45,7 @@ namespace LinkedListEx
         public void Remove()
         {
             _head = _head.Next;
+            
         }
 
         public void Remove(int index)
@@ -67,28 +68,25 @@ namespace LinkedListEx
         public T Search(int index)
         {
          
-                return FindIndex(index).Data;
+            return FindIndex(index).Data;
             
-       }
+        }
 
         private Node<T> FindIndex(int index)
         {
             Node<T> current = _head;
-            if (index >= 0)
+            if (index <= 0) { throw new IndexOutOfRangeException(); }
+                            
+            for (int i = 0; i < index; i++)
             {
-                
-                for (int i = 0; i < index; i++)
+                if (current.Next == null)
                 {
-                    if (current.Next == null)
-                    {
-                        throw new IndexOutOfRangeException();
-                    }
-                    current = current.Next;
-
+                    throw new IndexOutOfRangeException();
                 }
-                return current;
+                current = current.Next;
             }
-            throw new IndexOutOfRangeException();
+            return current;
+           
 
 
         }
