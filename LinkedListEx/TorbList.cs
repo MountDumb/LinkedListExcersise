@@ -6,16 +6,59 @@ using System.Threading.Tasks;
 
 namespace LinkedListEx
 {
-    public class TorbList<T>
+    public class TorbList<T> 
     {
         private Node<T> _head;
         //private int _index;
+
+        public T this[int key]
+        {
+            get { return Search(key); }
+        }
+
+      
 
         public TorbList()
         {
             
         }
 
+        public bool Contains(T obj)
+        {
+            Node<T> temp = _head;
+
+            while (temp.Next != null)
+            {
+                if (temp.Data.Equals(obj))
+                {
+                    return true;
+                }
+                temp = temp.Next;
+                
+            }
+            return false;
+        }
+
+        public int IndexOf(T input)
+        {
+            Node<T> temp = _head;
+            int i = 0;
+
+            while (_head.Next != null)
+            {
+                if (Contains(input))
+                {
+                    return i;
+                }
+                else
+                {
+                    temp = temp.Next;
+                    i++;
+                }
+            }
+            return -1;
+            
+        }
        
 
         public void Insert(T data)

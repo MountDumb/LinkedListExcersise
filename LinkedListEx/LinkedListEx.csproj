@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassMember.cs" />
+    <Compile Include="ClubMember.cs" />
+    <Compile Include="CMFactory.cs" />
     <Compile Include="MyQueue.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
