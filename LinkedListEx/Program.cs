@@ -49,22 +49,42 @@ namespace LinkedListEx
         {
             //Method should have a return type. This is purely for measuring time.
             Stopwatch sw = new Stopwatch();
-            int counter = 0;
+            //int counter = 0;
             Random rand = new Random();
-            IComparable[] temp = new ClubMember[2];
+            IComparable[] temp = new ClubMember[3];
+
+            for (int i = 0; i < 3; i++)
+            {
+                temp[i] = arr[rand.Next(arr.Length)];
+            }
 
             sw.Start();
-            while (counter < arr.Length)
+            foreach (var item in temp)
             {
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < arr.Length; i++)
                 {
-                    temp[i] = arr[rand.Next(arr.Length)];
+                    if (arr[i].CompareTo(item) == 0)
+                    {
+                        Console.WriteLine("Found " + item.ToString() + " at postion " + i +  " in arr");
+                    }
                 }
-                counter++;
+                
             }
             sw.Stop();
             Console.WriteLine(sw.Elapsed);
-            
+
+            //sw.Start();
+            //while (counter < arr.Length)
+            //{
+            //    for (int i = 0; i < 2; i++)
+            //    {
+            //        temp[i] = arr[rand.Next(arr.Length)];
+            //    }
+            //    counter++;
+            //}
+            //sw.Stop();
+            //Console.WriteLine(sw.Elapsed);
+
         }
 
         public void Populate(ClubMember[] toBePopulated)
