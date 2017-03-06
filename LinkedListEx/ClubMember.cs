@@ -28,11 +28,11 @@ namespace LinkedListEx
 
 
         }
-        
-        public int CompareTo(object obj)  
+
+        public int CompareTo(object obj)
         {
             ClubMember cm = obj as ClubMember;
-            
+
             if (this.MemberId < cm.MemberId)
             {
                 return 1;
@@ -45,8 +45,10 @@ namespace LinkedListEx
             {
                 return 0;
             }
-            
+
         }
+
+
 
         public override bool Equals(object obj)
         {

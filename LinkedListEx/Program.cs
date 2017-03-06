@@ -58,12 +58,13 @@ namespace LinkedListEx
                 temp[i] = arr[rand.Next(arr.Length)];
             }
 
+            
             sw.Start();
             foreach (var item in temp)
             {
                 for (int i = 0; i < arr.Length; i++)
                 {
-                    if (arr[i].CompareTo(item) == 0)
+                    if (arr[i].Equals(item))
                     {
                         Console.WriteLine("Found " + item.ToString() + " at postion " + i +  " in arr");
                     }
@@ -73,14 +74,15 @@ namespace LinkedListEx
             sw.Stop();
             Console.WriteLine(sw.Elapsed);
 
-            //sw.Start();
-            //while (counter < arr.Length)
+            // Binary search??
+
+            Array.Sort(temp);
+
+            //sw.Restart();
+            //foreach (var item in temp)
             //{
-            //    for (int i = 0; i < 2; i++)
-            //    {
-            //        temp[i] = arr[rand.Next(arr.Length)];
-            //    }
-            //    counter++;
+            //    Console.WriteLine(Array.BinarySearch(arr, temp));
+
             //}
             //sw.Stop();
             //Console.WriteLine(sw.Elapsed);
