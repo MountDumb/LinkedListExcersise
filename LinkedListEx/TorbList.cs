@@ -26,7 +26,7 @@ namespace LinkedListEx
         public bool Contains(T obj)
         {
             Node<T> temp = _head;
-
+            int counter = 0;
             while (temp.Next != null)
             {
                 if (temp.Data.Equals(obj))
@@ -34,6 +34,7 @@ namespace LinkedListEx
                     return true;
                 }
                 temp = temp.Next;
+                counter++;
                 
             }
             return false;
@@ -42,21 +43,36 @@ namespace LinkedListEx
         public int IndexOf(T input)
         {
             Node<T> temp = _head;
-            int i = 0;
+            int counter = 0;
 
-            while (_head.Next != null)
+            while (temp.Next != null)
             {
-                if (Contains(input))
+                if (temp.Data.Equals(input))
                 {
-                    return i;
+                    return counter;
                 }
-                else
-                {
-                    temp = temp.Next;
-                    i++;
-                }
+                temp = temp.Next;
+                counter++;
+
             }
             return -1;
+            
+            //Node<T> temp = _head;
+            //int i = 0;
+
+            //while (_head.Next != null)
+            //{
+            //    if (Contains(input))
+            //    {
+            //        return i;
+            //    }
+            //    else
+            //    {
+            //        temp = temp.Next;
+            //        i++;
+            //    }
+            //}
+            //return -1;
             
         }
        
