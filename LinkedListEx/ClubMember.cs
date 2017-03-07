@@ -52,16 +52,22 @@ namespace LinkedListEx
 
         public override bool Equals(object obj)
         {
-            if (this.ToString() == obj.ToString())
+            if (this.GetHashCode() == obj.GetHashCode())
             {
                 return true;
             }
             return false;
+
+            //if (this.ToString() == obj.ToString())
+            //{
+            //    return true;
+            //}
+            //return false;
         }
 
         public override int GetHashCode()
         {
-            
+
             return base.GetHashCode();
         }
     }
