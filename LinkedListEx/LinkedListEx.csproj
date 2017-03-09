@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinarySearchTree.cs" />
     <Compile Include="ClubMember.cs" />
     <Compile Include="CMFactory.cs" />
     <Compile Include="MyQueue.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TorbList.cs" />
+    <Compile Include="TreeNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

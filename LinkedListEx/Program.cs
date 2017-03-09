@@ -15,11 +15,46 @@ namespace LinkedListEx
         //ClubMember mem4 = new ClubMember(4, "Taylor", "Swift", 12);
 
         //TorbList<ClubMember> members = new TorbList<ClubMember>();
-        
+
         static void Main(string[] args)
         {
-           Program p = new Program();
-           p.Run();      
+            Program p = new Program();
+            //p.BRun();
+            p.Run();
+        }
+
+        public void BRun()
+        {
+            //Initialize a BST which will contain integers
+            BinarySearchTree<int> intTree = new BinarySearchTree<int>();
+
+            Random r = new Random(DateTime.Now.Millisecond);
+            string trace = "";
+
+            //Insert 5 random integers into the tree
+            for (int i = 0; i < 5; i++)
+            {
+                int randomInt = r.Next(1, 500);
+                intTree.Insert(randomInt);
+                trace += randomInt + " ";
+            }
+
+            // Find the largest value in the tree
+            Console.WriteLine("Max: " + intTree.FindMax());
+
+            //Find the smallest value in the tree
+            Console.WriteLine("Min: " + intTree.FindMin());
+
+            // Find the root of the tree
+            Console.WriteLine("Root: " + intTree.Root.Data);
+
+            // The order in which the elements were added to the tree
+            Console.WriteLine("Trace: " + trace);
+
+            // A textual representation of the tree
+            Console.WriteLine("Tree: " + intTree);
+
+            Console.ReadLine();
         }
 
         public void Run()
@@ -39,7 +74,14 @@ namespace LinkedListEx
             Populate(largeBinary);
 
             SearchLinearExample(smallLinear);
-            SearchLinearExample(largeBinary);
+            SearchLinearExample(largeLinear);
+
+            WriteCollectionToConsole(smallBinary);
+            InsertionSort(smallBinary);
+            WriteCollectionToConsole(smallBinary);
+
+            //InsertionSort(largeBinary);
+
 
             Console.ReadLine();
 
@@ -58,7 +100,7 @@ namespace LinkedListEx
                 temp[i] = arr[rand.Next(arr.Length)];
             }
 
-            
+
             sw.Start();
             foreach (var item in temp)
             {
@@ -66,10 +108,10 @@ namespace LinkedListEx
                 {
                     if (arr[i].Equals(item))
                     {
-                        Console.WriteLine("Found " + item.ToString() + " at postion " + i +  " in arr");
+                        Console.WriteLine("Found " + item.ToString() + " at postion " + i + " in arr");
                     }
                 }
-                
+
             }
             sw.Stop();
             Console.WriteLine(sw.Elapsed);
@@ -88,34 +130,38 @@ namespace LinkedListEx
             //Console.WriteLine(sw.Elapsed);
 
         }
+        
 
-   //     procedure insertionSort(A : array of items )
-   //int holePosition
-   //int valueToInsert
-	
-   //for i = 1 to length(A) inclusive do:
-	
-   //   /* select value to be inserted */
-   //   valueToInsert = A[i]
-   //   holePosition = i
-      
-   //   /*locate hole position for the element to be inserted */
-		
-   //   while holePosition > 0 and A[holePosition - 1] > valueToInsert do:
-   //      A[holePosition] = A[holePosition - 1]
-   //      holePosition = holePosition - 1
-   //   end while
-		
-   //   /* insert the number at hole position */
-   //   A[holePosition] = valueToInsert
-
-   //end for
-
-
-//end procedure
+        public void WriteCollectionToConsole(IComparable[] input)
+        {
+            foreach (var item in input)
+            {
+                Console.WriteLine(item.ToString());
+            }
+        }
+   
         public void InsertionSort(IComparable[] input)
         {
+            Stopwatch sw = new Stopwatch();
+            int holePosition;
+            IComparable objectInCollection;
 
+            sw.Start();
+            for (int i = 1; i < input.Count(); i++)
+            {
+                objectInCollection = input[i];
+                holePosition = i;
+
+                while (holePosition > 0 && input[holePosition - 1].CompareTo(objectInCollection) == 1)
+                {
+                    input[holePosition] = input[holePosition - 1];
+                    holePosition--;
+                }
+                input[holePosition] = objectInCollection;
+            }
+            sw.Stop();
+
+            Console.WriteLine(sw.Elapsed);
         }
 
         public void Populate(ClubMember[] toBePopulated)

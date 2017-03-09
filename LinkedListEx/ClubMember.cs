@@ -33,11 +33,11 @@ namespace LinkedListEx
         {
             ClubMember cm = obj as ClubMember;
 
-            if (this.MemberId < cm.MemberId)
+            if (this.MemberId > cm.MemberId)
             {
                 return 1;
             }
-            else if (this.MemberId > cm.MemberId)
+            else if (this.MemberId < cm.MemberId)
             {
                 return -1;
             }
