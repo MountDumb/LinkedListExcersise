@@ -73,16 +73,21 @@ namespace LinkedListEx
             Populate(smallBinary);
             Populate(largeBinary);
 
-            SearchLinearExample(smallLinear);
-            SearchLinearExample(largeLinear);
+            //SearchLinearExample(smallLinear);
+            //SearchLinearExample(largeLinear);
 
-            WriteCollectionToConsole(smallBinary);
+            //WriteCollectionToConsole(smallBinary);
             InsertionSort(smallBinary);
-            WriteCollectionToConsole(smallBinary);
+            Console.WriteLine();
+            //WriteCollectionToConsole(smallBinary);
 
-            //InsertionSort(largeBinary);
+            BinarySearchExample(smallBinary);
+            Console.WriteLine();
 
-
+            InsertionSort(largeBinary);
+            Console.WriteLine();
+            BinarySearchExample(smallBinary);
+            
             Console.ReadLine();
 
         }
@@ -102,33 +107,77 @@ namespace LinkedListEx
 
 
             sw.Start();
-            foreach (var item in temp)
+            for (int i = 0; i < 999; i++)
             {
-                for (int i = 0; i < arr.Length; i++)
+                foreach (var item in temp)
                 {
-                    if (arr[i].Equals(item))
+                    for (int ii= 0; ii < arr.Length; ii++)
                     {
-                        Console.WriteLine("Found " + item.ToString() + " at postion " + i + " in arr");
+                        if (arr[i].Equals(item))
+                        {
+                            Console.WriteLine("Found " + item.ToString() + " at postion " + ii + " in arr");
+                        }
                     }
-                }
 
+                }
             }
             sw.Stop();
             Console.WriteLine(sw.Elapsed);
 
-            // Binary search??
+           
 
-            //Array.Sort(temp);
+        }
 
-            //sw.Restart();
-            //foreach (var item in temp)
-            //{
-            //    Console.WriteLine(Array.BinarySearch(arr, temp));
+        public void BinarySearchExample(IComparable[] input)
+        {
+            // Generate array with 3 people to search for.
+            Random rand = new Random();
+            IComparable[] temp = new ClubMember[3];
 
-            //}
-            //sw.Stop();
-            //Console.WriteLine(sw.Elapsed);
+            for (int i = 0; i < 3; i++)
+            {
+                temp[i] = input[rand.Next(input.Length)];
+            }
 
+            // The actual search algorithm.
+            bool running = true;
+            int min = 0;
+            int max = input.Count();
+            int guess;
+
+            if (min > max) { Console.WriteLine("Item not present"); }
+            Stopwatch sw = new Stopwatch();
+
+            sw.Start();
+
+
+            for (int i = 0; i < 999; i++)
+            {
+                foreach (var item in temp)
+                {
+                    running = true;
+                    while (running)
+                    {
+                        guess = (min + max) / 2;
+                      
+                        if (input[guess].CompareTo(item) == 1)
+                        {
+                            max--;
+                        }
+                        else if (input[guess].CompareTo(item) == -1)
+                        {
+                            min++;
+                        }
+                        if (input[guess].CompareTo(item) == 0)
+                        {
+                            //Console.WriteLine(item + " found at index: " + guess);
+                            running = false;
+                        }
+                    }
+                }
+            }
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed);
         }
         
 
