@@ -76,17 +76,19 @@ namespace LinkedListEx
             //SearchLinearExample(smallLinear);
             //SearchLinearExample(largeLinear);
 
-            //WriteCollectionToConsole(smallBinary);
-            InsertionSort(smallBinary);
-            Console.WriteLine();
-            //WriteCollectionToConsole(smallBinary);
+            ////WriteCollectionToConsole(smallBinary);
+            //InsertionSort(smallBinary);
+            //Console.WriteLine();
+            ////WriteCollectionToConsole(smallBinary);
 
-            BinarySearchExample(smallBinary);
-            Console.WriteLine();
+            //BinarySearchExample(smallBinary);
+            //Console.WriteLine();
 
             InsertionSort(largeBinary);
             Console.WriteLine();
-            BinarySearchExample(smallBinary);
+            Console.ReadLine();
+          
+            BinarySearchExample(largeBinary);
             
             Console.ReadLine();
 
@@ -140,12 +142,12 @@ namespace LinkedListEx
             }
 
             // The actual search algorithm.
-            bool running = true;
-            int min = 0;
-            int max = input.Count();
+            bool running;
+            int min;
+            int max; 
             int guess;
 
-            if (min > max) { Console.WriteLine("Item not present"); }
+            
             Stopwatch sw = new Stopwatch();
 
             sw.Start();
@@ -155,20 +157,24 @@ namespace LinkedListEx
             {
                 foreach (var item in temp)
                 {
+
+                    min = 0;
+                    max = input.Length;
                     running = true;
+
                     while (running)
                     {
                         guess = (min + max) / 2;
                       
-                        if (input[guess].CompareTo(item) == 1)
+                        if (input[guess].CompareTo(item) == -1)
                         {
-                            max--;
+                            min = guess + 1;
                         }
-                        else if (input[guess].CompareTo(item) == -1)
+                        else if (input[guess].CompareTo(item) == 1)
                         {
-                            min++;
+                            max = guess - 1;
                         }
-                        if (input[guess].CompareTo(item) == 0)
+                        else if (input[guess].CompareTo(item) == 0)
                         {
                             //Console.WriteLine(item + " found at index: " + guess);
                             running = false;
